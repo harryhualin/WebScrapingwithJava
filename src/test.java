@@ -23,9 +23,8 @@ public class test {
 			int i=0;
 			Elements index=doc.select("div.pagination");
 			Elements eles=index.get(0).getElementsByClass("hide-xs");
-			System.out.println(eles.size());	
+			int pages=eles.size();
 		
-			
 			
 			for(Element name:temp) {
 				i++;
