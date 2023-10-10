@@ -1,6 +1,9 @@
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -26,11 +29,14 @@ public class WebScrap {
 				Element e=title.getElementsByTag("a").first();
 				String laptop_URL=e.attr("href");
 				Document laptop_doc=Jsoup.connect("https:"+laptop_URL).userAgent("mozilla/17.0").get();
-				Elements specs=laptop_doc.select("li.mb-2");	
+				Elements specs=laptop_doc.select("li.mb-2 p");	
+				List<String> datas=new ArrayList<String>();
 				for (Element spec:specs) {
 					System.out.println(spec.text()+"\n");
+					datas.add(spec.text());
 				}
-			
+				
+				
 				break;
 			}
 		
