@@ -23,19 +23,22 @@ public class WebScrap {
 								.userAgent("mozilla/17.0").get();
 			Elements titles=doc.select("h3.ps-title");			
 
-			
-			
-			for(Element title:titles) {				
+			for(Element title:titles) {
+				
+				Product laptop=new Product();
 				Element e=title.getElementsByTag("a").first();
-				String laptop_URL=e.attr("href");
-				Document laptop_doc=Jsoup.connect("https:"+laptop_URL).userAgent("mozilla/17.0").get();
-				Elements specs=laptop_doc.select("li.mb-2 p");	
+				String laptop_URL="https:"+e.attr("href");
+				Document laptop_doc=Jsoup.connect(laptop_URL).userAgent("mozilla/17.0").get();
+				laptop.setSource(laptop_URL);
+				laptop.setBrand("Dell");
+				
+				Elements specs=laptop_doc.select("li.mb-2 p");
 				List<String> datas=new ArrayList<String>();
 				for (Element spec:specs) {
 					System.out.println(spec.text()+"\n");
 					datas.add(spec.text());
 				}
-				
+				int[] index= {0,1,2,3,4,5,6,7};
 				
 				break;
 			}

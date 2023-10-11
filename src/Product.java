@@ -17,8 +17,6 @@ public class Product {
 	private String source;
 
 	private int price;
-
-
 	
 	private String processor;
 	
